@@ -11,11 +11,19 @@ namespace TheTable
         static void Main(string[] args)
         {
 
-            Table[] tableArray = new Table[2];
+            //Table[] tableArray = new Table[2];
 
-            tableArray[0] = new Table("2m", "7m");
-            tableArray[1] = new Table("2m", "7m");
+            //tableArray[0] = new Table("2m", "7m");
+           // tableArray[1] = new Table("2m", "7m");
 
+            int[] tableArray = new int[5];
+
+            Random randNum = new Random();
+            for (int i = 0; i < tableArray.Length; i++)
+            {
+                tableArray[i] = randNum.Next(50, 200);
+
+            }
 
             for (int counter = 0; counter <= 1; counter++)
             {
@@ -27,25 +35,28 @@ namespace TheTable
 
         public class Table
         {
-            public string Height { get; set; }
-            public string Width { get; set; }          
+            public int Height { get; set; }
+            public int Width { get; set; }          
 
-            public string ShowData
+            public int ShowData
             {
                 get
                 {
-                    string showdata = Height + "" + Width + "";
+                    int showdata = Height;
+                    //int showdata1 = Width;
+                    //string showdata2 = Height + "" + Width;
                     return showdata;
+                    
                 }
             }
 
-            public int RandomNumber(int min, int max)  //не знаю як це викликати у класі прогам
-            {
-                Random random = new Random();
-                return random.Next(min, max);
-            }
+            //public int RandomNumber(int min, int max)  //не знаю як це викликати у класі прогам
+            //{
+            //    Random random = new Random();
+            //    return random.Next(min, max);
+            //}
 
-            public Table (string height, string width)
+            public Table (int height, int width)
             {
                 Height = height;
                 Width = width;
