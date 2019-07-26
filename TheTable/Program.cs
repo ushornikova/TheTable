@@ -1,66 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TheTable
+namespace TABLE
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Table[] tables = new Table[10]; //ми створили змінну tables і записали у неї масив б масив присвоїли змінній
 
-            //Table[] tableArray = new Table[2];
-
-            //tableArray[0] = new Table("2m", "7m");
-           // tableArray[1] = new Table("2m", "7m");
-
-            int[] tableArray = new int[5];
 
             Random randNum = new Random();
-            for (int i = 0; i < tableArray.Length; i++)
+            for (int i = 0; i < tables.Length; i++)
             {
-                tableArray[i] = randNum.Next(50, 200);
-
-            }
-
-            for (int counter = 0; counter <= 1; counter++)
-            {
-                Console.WriteLine(tableArray[counter].ShowData);
+                // створили рандомні ширину та висоту
+                int randomHeight = randNum.Next(50, 200);
+                int randomWidth = randNum.Next(50, 200);
+                // створили об'єкт типу Table використовуючи конструкто
+                Table randomTable = new Table(randomHeight, randomWidth);
+                // записали новостворений об'єкт у масив
+                tables[i] = randomTable;
+                //метод викликається на обєкті tables[i] або randomTable , 
+                //метод і конструктор викликаються з дужками
+                tables[i].ShowData();
             }
 
             Console.ReadKey();
         }
+    }
 
-        public class Table
+    public class Table
+    {
+        public int Height { get; set; }
+        public int Width { get; set; }
+        //в обект можна додати ці дві проперті,- визначила клас
+
+        //потрібно ств 10 обєктів в тілі програми
+
+        public Table(int height, int width)
         {
-            public int Height { get; set; }
-            public int Width { get; set; }          
+            Height = height;
+            Width = width;
+        }
 
-            public int ShowData
-            {
-                get
-                {
-                    int showdata = Height;
-                    //int showdata1 = Width;
-                    //string showdata2 = Height + "" + Width;
-                    return showdata;
-                    
-                }
-            }
-
-            //public int RandomNumber(int min, int max)  //не знаю як це викликати у класі прогам
-            //{
-            //    Random random = new Random();
-            //    return random.Next(min, max);
-            //}
-
-            public Table (int height, int width)
-            {
-                Height = height;
-                Width = width;
-            }
+        public void ShowData()
+        {
+            Console.WriteLine("Height: " + Height + ", width: " + Width);
         }
     }
 }
